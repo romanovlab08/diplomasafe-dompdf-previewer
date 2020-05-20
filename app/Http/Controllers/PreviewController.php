@@ -13,31 +13,9 @@ class PreviewController extends Controller
         }
 
         $pdfService = app()->make('dompdf.wrapper');
-        $paperProperties = $this->getPaperProperties(strtolower($request->size), strtolower($request->orientation));
-        $pdf = $pdfService->loadView($request->template_name, [])->setPaper($paperProperties['size'], $paperProperties['orientation']);
+        $pdf = $pdfService
+            ->loadView($request->template_name, [])
+            ->setPaper($request->size, $request->orientation);
         return $pdf->stream('preview.pdf');
-    }
-
-    /**
-     * @param $querySize
-     * @param $queryOrientation
-     * @return array
-     */
-    private function getPaperProperties($querySize, $queryOrientation) {
-        $orientation = 'portrait';
-        $size = 'A4';
-
-        if ($querySize && in_array($querySize, config('constants.allowedPaperSizes'))) {
-           $size = $querySize;
-        }
-
-        if ($queryOrientation && in_array($queryOrientation, config('constants.allowedPaperOrientations'))) {
-            $orientation = $queryOrientation;
-        }
-
-        return [
-            'size' => $size,
-            'orientation' => $orientation,
-        ];
     }
 }

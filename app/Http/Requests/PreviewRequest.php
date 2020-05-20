@@ -24,9 +24,8 @@ class PreviewRequest extends FormRequest
     public function rules()
     {
         return [
-//            TODO: Add the request validation
-//            'paper' => 'required|string|in:letter,A4,legal', //'letter', 'legal', 'A4', etc. See Dompdf\Adapter\CPDF::$PAPER_SIZES
-//            'orientation' => 'required|string|in:portrait,landscape',
+            'size' => 'required|string|in:letter,a4,A4', //'letter', 'legal', 'A4', etc. See Dompdf\Adapter\CPDF::$PAPER_SIZES
+            'orientation' => 'required|string|in:portrait,landscape',
             'template_name' => 'required|string'
         ];
     }
