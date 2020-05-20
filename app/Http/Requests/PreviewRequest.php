@@ -25,8 +25,8 @@ class PreviewRequest extends FormRequest
     public function rules()
     {
         return [
-            'size' => 'required|string|in:'. implode(',', array_keys(CPDF::$PAPER_SIZES)), // See Dompdf\Adapter\CPDF::$PAPER_SIZES
-            'orientation' => 'required|string|in:portrait,landscape',
+            'size' => 'nullable|string|in:'. implode(',', array_keys(CPDF::$PAPER_SIZES)), // See Dompdf\Adapter\CPDF::$PAPER_SIZES
+            'orientation' => 'nullable|string|in:portrait,landscape',
             'template_name' => 'required|string'
         ];
     }

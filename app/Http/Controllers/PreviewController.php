@@ -11,11 +11,15 @@ class PreviewController extends Controller
         if (!view()->exists($request->template_name)) {
             abort(404);
         }
-
         $pdfService = app()->make('dompdf.wrapper');
+
+        $size = $request->size ?? 'a4';
+        $orientation = $request->orientation ?? 'portrait';
+
         $pdf = $pdfService
-            ->loadView($request->template_name, [])
-            ->setPaper($request->size, $request->orientation);
-        return $pdf->stream('preview.pdf');
+            ->setPaper($size, $orientation)
+            ->loadView($request->template_name, []);
+
+        return $pdf->stream('sdfds.pdf', ["Attachment" => 0]);
     }
 }

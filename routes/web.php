@@ -15,4 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/preview/{template_name}', 'PreviewController@preview');
+Route::get('/preview/{template_name}/{size}/{orientation}', 'PreviewController@preview');
