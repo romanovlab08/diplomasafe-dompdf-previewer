@@ -20,6 +20,6 @@ class PreviewController extends Controller
             ->setPaper($size, $orientation)
             ->loadView($request->template_name, []);
 
-        return $pdf->stream('sdfds.pdf', ["Attachment" => 0]);
+        return $pdf->stream('example_diploma.pdf', ["Attachment" => 0]);
     }
 }
