@@ -5,27 +5,27 @@
 
 @font-face {
   font-family: 'Hind Guntur';
-  src: url('/fonts/HindGuntur-Regular.ttf') format('truetype');
+  src: url('../fonts/HindGuntur-Regular.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Crimson Text';
-  src: url('/fonts/CrimsonText-Regular.ttf') format('truetype');
+  src: url('../fonts/CrimsonText-Regular.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Aguafina Script';
-  src: url('/fonts/AguafinaScript-Regular.ttf') format('truetype');
+  src: url('../fonts/AguafinaScript-Regular.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Work Sans';
-  src: url('/fonts/WorkSans-VariableFont_wght.ttf') format('truetype');
+  src: url('../fonts/WorkSans-VariableFont_wght.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Philosopher';
-  src: url('/fonts/Philosopher-Regular.ttf') format('truetype');
+  src: url('../fonts/Philosopher-Regular.ttf') format('truetype');
 }
 
 body, html {

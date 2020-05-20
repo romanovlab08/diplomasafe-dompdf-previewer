@@ -11,9 +11,11 @@ class PreviewController extends Controller
         if (!view()->exists($request->template_name)) {
             abort(404);
         }
+
         $pdfService = app()->make('dompdf.wrapper');
-        //TODO: Get paper and orientation from request
-        $pdf = $pdfService->loadView($request->template_name, [])->setPaper('letter', 'landscape');
+        $pdf = $pdfService
+            ->loadView($request->template_name, [])
+            ->setPaper($request->size, $request->orientation);
         return $pdf->stream('preview.pdf');
     }
 }

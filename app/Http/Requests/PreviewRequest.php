@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Dompdf\Adapter\CPDF;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PreviewRequest extends FormRequest
@@ -24,9 +25,8 @@ class PreviewRequest extends FormRequest
     public function rules()
     {
         return [
-//            TODO: Add the request validation
-//            'paper' => 'required|string|in:letter,A4,legal', //'letter', 'legal', 'A4', etc. See Dompdf\Adapter\CPDF::$PAPER_SIZES
-//            'orientation' => 'required|string|in:portrait,landscape',
+            'size' => 'required|string|in:'. implode(',', array_keys(CPDF::$PAPER_SIZES)), // See Dompdf\Adapter\CPDF::$PAPER_SIZES
+            'orientation' => 'required|string|in:portrait,landscape',
             'template_name' => 'required|string'
         ];
     }
