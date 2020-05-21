@@ -12,8 +12,14 @@ class PreviewController extends Controller
             abort(404);
         }
         $pdfService = app()->make('dompdf.wrapper');
-        //TODO: Get paper and orientation from request
-        $pdf = $pdfService->loadView($request->template_name, [])->setPaper('letter', 'landscape');
-        return $pdf->stream('preview.pdf');
+
+        $size = $request->size ?? 'a4';
+        $orientation = $request->orientation ?? 'portrait';
+
+        $pdf = $pdfService
+            ->setPaper($size, $orientation)
+            ->loadView($request->template_name, []);
+
+        return $pdf->stream('example_diploma.pdf', ["Attachment" => 0]);
     }
 }
